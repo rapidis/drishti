@@ -25,12 +25,6 @@ INSTALL="${3}"
 # and the tests run on a real Android via USB connection in local host testing
 # See: https://developer.android.com/studio/run/emulator-acceleration#command-gpu
 
-if [[ `uname` == "Linux" ]]; then
-    GAUZE_ANDROID_EMULATOR_GPU=off # this should work
-else
-    GAUZE_ANDROID_EMULATOR_GPU=host
-fi
-
 if [[ ${TRAVIS} == "true" ]]; then
     GAUZE_ANDROID_USE_EMULATOR=YES # remote test w/ emulator
 else
@@ -55,7 +49,7 @@ ARGS=(
     DRISHTI_COPY_3RDPARTY_LICENSES=ON
     DRISHTI_HAS_GPU=${GPU}
     GAUZE_ANDROID_USE_EMULATOR=${GAUZE_ANDROID_USE_EMULATOR}
-    GAUZE_ANDROID_EMULATOR_GPU=${GAUZE_ANDROID_EMULATOR_GPU}
+    GAUZE_ANDROID_EMULATOR_GPU=swiftshader
     GAUZE_ANDROID_EMULATOR_PARTITION_SIZE=40
     HUNTER_CONFIGURATION_TYPES="${CONFIG}"
     HUNTER_SUPPRESS_LIST_OF_FILES=ON
